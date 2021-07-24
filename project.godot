@@ -8,6 +8,22 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Resource",
+"class": "Food",
+"language": "GDScript",
+"path": "res://interactible/food/Food.gd"
+}, {
+"base": "Resource",
+"class": "Interaction",
+"language": "GDScript",
+"path": "res://interactible/Interaction.gd"
+} ]
+_global_script_class_icons={
+"Food": "",
+"Interaction": ""
+}
+
 [application]
 
 config/name="Crap & Taxes"
@@ -93,7 +109,7 @@ ACTION={
 
 2d_physics/layer_1="default"
 2d_physics/layer_2="player"
-2d_physics/layer_3="interaction"
+2d_physics/layer_3="interaction_trigger"
 
 [physics]
 
