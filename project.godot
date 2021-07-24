@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://interactible/food/Food.gd"
 }, {
+"base": "Area2D",
+"class": "Interactible",
+"language": "GDScript",
+"path": "res://interactible/Interactible.gd"
+}, {
 "base": "Resource",
 "class": "Interaction",
 "language": "GDScript",
@@ -21,6 +26,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Food": "",
+"Interactible": "",
 "Interaction": ""
 }
 
