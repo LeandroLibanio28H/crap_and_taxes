@@ -2,6 +2,9 @@
 
 [ext_resource path="res://interactible/Interactible.gd" type="Script" id=1]
 [ext_resource path="res://data/theme/GameTheme.tres" type="Theme" id=2]
+[ext_resource path="res://hud/ActionBar/barrinha_topo.png" type="Texture" id=3]
+[ext_resource path="res://hud/ActionBar/barrinha_fundo.png" type="Texture" id=4]
+[ext_resource path="res://hud/ActionBar/barrinha_conteudo.png" type="Texture" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 5.0
@@ -9,18 +12,6 @@ radius = 5.0
 [sub_resource type="NoiseTexture" id=2]
 width = 32
 height = 8
-
-[sub_resource type="NoiseTexture" id=3]
-width = 32
-height = 4
-
-[sub_resource type="NoiseTexture" id=4]
-width = 32
-height = 4
-
-[sub_resource type="NoiseTexture" id=5]
-width = 32
-height = 4
 
 [node name="Interactible" type="Area2D"]
 input_pickable = false
@@ -62,12 +53,13 @@ margin_left = -16.0
 margin_top = 8.0
 margin_right = 16.0
 margin_bottom = 12.0
-texture_under = SubResource( 3 )
-texture_over = SubResource( 4 )
-texture_progress = SubResource( 5 )
+texture_under = ExtResource( 4 )
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [connection signal="area_entered" from="." to="." method="_on_Interactible_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_Interactible_area_exited"]
+[connection signal="value_changed" from="Action/ActionBar" to="." method="_on_ActionBar_value_changed"]

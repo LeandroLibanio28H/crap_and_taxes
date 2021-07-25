@@ -1,4 +1,4 @@
-extends KinematicBody2D
+class_name PlayableCharacter extends KinematicBody2D
 
 
 # EXPORT
@@ -19,6 +19,9 @@ enum States {
 var _velocity := Vector2()
 var _flip := false
 
+
+# PUBLIC
+var flatulencia := Flatulencia.new()
 
 
 
@@ -55,3 +58,10 @@ func _handle_animations() -> void:
 		_anim_player.play("idle")
 	
 	_sprite.flip_h = _flip
+
+
+
+class Flatulencia:
+	var smell : int = 0
+	var duracao : int = 0
+	var distance : int = 0

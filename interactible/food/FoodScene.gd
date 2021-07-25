@@ -11,5 +11,11 @@ func _ready() -> void:
 
 
 
-func _interact(area : Area2D) -> void:
-	._interact(area)
+func _interact() -> void:
+	
+	player.flatulencia.duracao += _food.density
+	player.flatulencia.distance += _food.gasification
+	player.flatulencia.smell += _food.acidity
+	
+	queue_free()
+	._interact()
