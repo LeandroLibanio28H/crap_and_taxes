@@ -1,0 +1,87 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://data/fonts/dogicapixelbold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://menu/MainMenu.gd" type="Script" id=2]
+[ext_resource path="res://data/theme/GameTheme.tres" type="Theme" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 2 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+color_default = Color( 1, 1, 1, 1 )
+color_selected = Color( 0.976471, 0.027451, 0.027451, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Margin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Center" type="CenterContainer" parent="Margin"]
+margin_right = 280.0
+margin_bottom = 140.0
+
+[node name="MenuItems" type="VBoxContainer" parent="Margin/Center"]
+margin_left = 53.0
+margin_top = 37.0
+margin_right = 227.0
+margin_bottom = 103.0
+custom_constants/separation = 15
+
+[node name="Start" type="Label" parent="Margin/Center/MenuItems"]
+margin_right = 174.0
+margin_bottom = 12.0
+text = "Sofrer"
+align = 1
+valign = 1
+
+[node name="Credits" type="Label" parent="Margin/Center/MenuItems"]
+margin_top = 27.0
+margin_right = 174.0
+margin_bottom = 39.0
+text = "Descréditos"
+align = 1
+valign = 1
+
+[node name="Quit" type="Label" parent="Margin/Center/MenuItems"]
+margin_top = 54.0
+margin_right = 174.0
+margin_bottom = 66.0
+text = "Pedir arrego"
+align = 1
+valign = 1
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 1, 0, 0, 1 )
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -112.5
+margin_top = -12.0
+margin_right = 112.5
+theme = ExtResource( 3 )
+text = "Pressione Enter para Selecionar"

@@ -1,0 +1,153 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://data/theme/GameTheme.tres" type="Theme" id=1]
+[ext_resource path="res://menu/Credits.gd" type="Script" id=2]
+
+[node name="Credits" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+margin_right = 280.0
+margin_bottom = 140.0
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/CenterContainer"]
+margin_left = 19.0
+margin_top = 7.0
+margin_right = 260.0
+margin_bottom = 133.0
+custom_constants/vseparation = 15
+columns = 2
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer/GridContainer"]
+self_modulate = Color( 1, 0, 0, 1 )
+margin_top = 4.0
+margin_right = 102.0
+margin_bottom = 10.0
+theme = ExtResource( 1 )
+text = "Arte 2D"
+align = 2
+valign = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/CenterContainer/GridContainer"]
+margin_left = 106.0
+margin_right = 241.0
+margin_bottom = 15.0
+theme = ExtResource( 1 )
+text = "Kevin de França
+Raul Pereti"
+
+[node name="Label3" type="Label" parent="MarginContainer/CenterContainer/GridContainer"]
+self_modulate = Color( 1, 0, 0, 1 )
+margin_top = 30.0
+margin_right = 102.0
+margin_bottom = 36.0
+theme = ExtResource( 1 )
+text = "Programação"
+align = 2
+valign = 1
+
+[node name="Label4" type="Label" parent="MarginContainer/CenterContainer/GridContainer"]
+margin_left = 106.0
+margin_top = 30.0
+margin_right = 241.0
+margin_bottom = 36.0
+theme = ExtResource( 1 )
+text = "Leandro Libanio"
+
+[node name="Label5" type="Label" parent="MarginContainer/CenterContainer/GridContainer"]
+self_modulate = Color( 1, 0, 0, 1 )
+margin_top = 55.0
+margin_right = 102.0
+margin_bottom = 61.0
+theme = ExtResource( 1 )
+text = "Level Design"
+align = 2
+valign = 1
+
+[node name="Label6" type="Label" parent="MarginContainer/CenterContainer/GridContainer"]
+margin_left = 106.0
+margin_top = 51.0
+margin_right = 241.0
+margin_bottom = 66.0
+theme = ExtResource( 1 )
+text = "Igor Siqueira
+Guilherme Gondarez"
+
+[node name="Label7" type="Label" parent="MarginContainer/CenterContainer/GridContainer"]
+self_modulate = Color( 1, 0, 0, 1 )
+margin_top = 85.0
+margin_right = 102.0
+margin_bottom = 91.0
+theme = ExtResource( 1 )
+text = "Sonoplastia"
+align = 2
+valign = 1
+
+[node name="Label8" type="Label" parent="MarginContainer/CenterContainer/GridContainer"]
+margin_left = 106.0
+margin_top = 81.0
+margin_right = 241.0
+margin_bottom = 96.0
+theme = ExtResource( 1 )
+text = "Guilherme Henrique
+Raul Pereti"
+
+[node name="Label9" type="Label" parent="MarginContainer/CenterContainer/GridContainer"]
+self_modulate = Color( 1, 0, 0, 1 )
+margin_top = 115.0
+margin_right = 102.0
+margin_bottom = 121.0
+theme = ExtResource( 1 )
+text = "Gerenciamento"
+align = 2
+valign = 1
+
+[node name="Label10" type="Label" parent="MarginContainer/CenterContainer/GridContainer"]
+margin_left = 106.0
+margin_top = 111.0
+margin_right = 241.0
+margin_bottom = 126.0
+theme = ExtResource( 1 )
+text = "Giovani Mantovani
+Igor Siqueira"
+
+[node name="Label" type="Label" parent="."]
+self_modulate = Color( 1, 0, 0, 1 )
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -98.0
+margin_top = -14.0
+margin_right = 98.0
+theme = ExtResource( 1 )
+text = "Pressione ESC para retornar"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
