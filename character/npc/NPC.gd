@@ -25,8 +25,8 @@ var exploded : bool = false
 
 # GODOT CALLBACKS
 func _ready() -> void:
-	var npc_type : int = (randi() % 9) + 1
-	#_explostion_rate = randi() % 11
+	var npc_type : int = (randi() % 11) + 1
+	_explostion_rate = randi() % 11
 	var texture = load("res://character/npc/textures/npc_" + str(npc_type) + ".png")
 	_sprite.texture = texture
 	$IATimer.connect("timeout", self, "_handle_IA")

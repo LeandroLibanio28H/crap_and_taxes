@@ -29,6 +29,7 @@ func _on_Interactible_area_exited(_area: Area2D) -> void:
 	$Action.hide()
 	$Popup/Label.self_modulate = Color.white
 	$Action/ActionBar.value = 0
+	$AudioStreamPlayer.stop()
 	value = 0
 	$Popup/Icon.texture = _interaction._icon
 	set_physics_process(false)
@@ -44,6 +45,7 @@ func interact() -> void:
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("INTERACT"):
+		$AudioStreamPlayer.play()
 		$Popup/Icon.texture = _interaction._icon_pressed
 		$Popup/Label.self_modulate = Color("822e24")
 		$Action.show()
@@ -51,6 +53,7 @@ func _physics_process(delta: float) -> void:
 		value = 0
 		return
 	if Input.is_action_just_released("INTERACT"):
+		$AudioStreamPlayer.stop()
 		$Popup/Icon.texture = _interaction._icon
 		$Popup/Label.self_modulate = Color.white
 		$Action.hide()
@@ -70,4 +73,5 @@ func _physics_process(delta: float) -> void:
 
 func _on_ActionBar_value_changed(new_value: float) -> void:
 	if new_value >= 100:
+		$AudioStreamPlayer.stop()
 		interact()

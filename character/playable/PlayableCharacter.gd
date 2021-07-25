@@ -116,4 +116,4 @@ func _flatulencia_explosion(pos : Vector2) -> void:
 class Flatulencia:
 	var smell : int = 0
 	var duracao : int = 0
-	var distance : int = 10
+	var distance : int = 0

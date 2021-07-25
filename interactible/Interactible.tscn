@@ -63,6 +63,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="area_entered" from="." to="." method="_on_Interactible_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_Interactible_area_exited"]
 [connection signal="value_changed" from="Action/ActionBar" to="." method="_on_ActionBar_value_changed"]

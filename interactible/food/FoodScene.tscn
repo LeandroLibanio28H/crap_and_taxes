@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://interactible/Interactible.tscn" type="PackedScene" id=1]
 [ext_resource path="res://interactible/food/FoodScene.gd" type="Script" id=2]
 [ext_resource path="res://interactible/resources/food.tres" type="Resource" id=3]
+[ext_resource path="res://data/sfx/mastigadinha.ogg" type="AudioStream" id=4]
 
 [node name="FoodScene" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -10,3 +11,6 @@ _interaction = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="." index="2"]
 position = Vector2( 0, -3 )
+
+[node name="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource( 4 )
