@@ -1,13 +1,72 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://character/playable/textures/pc_sheet.png" type="Texture" id=1]
 [ext_resource path="res://character/playable/PlayableCharacter.gd" type="Script" id=2]
+[ext_resource path="res://hud/action_bar/barrinha_peido_under.png" type="Texture" id=3]
+[ext_resource path="res://hud/action_bar/barrinha_peido_over.png" type="Texture" id=4]
+[ext_resource path="res://hud/action_bar/barrinha_peido_fill.png" type="Texture" id=5]
+[ext_resource path="res://data/sfx/peidos/Medio.ogg" type="AudioStream" id=6]
+[ext_resource path="res://data/sfx/peidos/Molhado.ogg" type="AudioStream" id=7]
+[ext_resource path="res://data/sfx/peidos/Peido longo.ogg" type="AudioStream" id=8]
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 128.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 12.0
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 6.0
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 12.0
+[sub_resource type="Animation" id=6]
+resource_name = "action"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 7, 10 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "eyes"
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 8, 9 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "gore"
+length = 0.9
+step = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 13, 14 ]
+}
 
 [sub_resource type="Animation" id=3]
 length = 0.4
@@ -46,15 +105,15 @@ script = ExtResource( 2 )
 _move_speed = 55.0
 _anim_player = NodePath("AnimationPlayer")
 _sprite = NodePath("Sprite")
+_action_bar = NodePath("Sprite/ActionBar")
 
-[node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 2 )
-shape = SubResource( 1 )
+[node name="Flatulencia" type="Area2D" parent="."]
+modulate = Color( 0.0745098, 0.878431, 0.0705882, 1 )
+collision_layer = 16
+collision_mask = 8
 
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 1 )
-hframes = 15
-frame = 3
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flatulencia"]
+shape = SubResource( 5 )
 
 [node name="InteractionArea" type="Area2D" parent="."]
 monitoring = false
@@ -63,7 +122,45 @@ collision_layer = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource( 2 )
 
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 2 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 15
+frame = 7
+
+[node name="ActionBar" type="Node2D" parent="Sprite"]
+visible = false
+
+[node name="ActionProgress" type="TextureProgress" parent="Sprite/ActionBar"]
+margin_left = 4.0
+margin_top = -16.0
+margin_right = 20.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 32 )
+texture_under = ExtResource( 3 )
+texture_over = ExtResource( 4 )
+texture_progress = ExtResource( 5 )
+fill_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
+anims/action = SubResource( 6 )
+anims/eyes = SubResource( 7 )
+anims/gore = SubResource( 8 )
 anims/idle = SubResource( 3 )
 anims/move = SubResource( 4 )
+
+[node name="FlatoMedio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="FlatoLongo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="FlatoMolhado" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )

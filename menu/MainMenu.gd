@@ -8,7 +8,7 @@ export var color_selected : Color
 var selected : int = 0
 
 
-onready var _menu_items = $Margin/Center/MenuItems
+onready var _menu_items = $Margin/VBoxContainer/MenuItems
 
 
 func _ready() -> void:
@@ -16,6 +16,7 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	var old = selected
 	if event.is_action_pressed("MOVE_S"):
 		selected += 1
 	elif event.is_action_pressed("MOVE_N"):
@@ -27,14 +28,19 @@ func _unhandled_input(event: InputEvent) -> void:
 		selected = 2
 	
 	if event.is_action_pressed("ui_accept"):
-		if selected == 2:
-			get_tree().quit()
-		elif selected == 1:
-			get_parent().get_parent()._load_credits()
-		elif selected == 0:
-			get_parent().get_parent().get_parent()._load_game()
+		$AudioStreamPlayer.connect("finished", self, "_load")
+		$AudioStreamPlayer.play()
 	
 	_update_color()
+
+
+func _load() -> void:
+	if selected == 2:
+		get_tree().quit()
+	elif selected == 1:
+		get_parent().get_parent()._load_credits()
+	elif selected == 0:
+		get_parent().get_parent().get_parent()._load_game()
 
 
 func _update_color() -> void:

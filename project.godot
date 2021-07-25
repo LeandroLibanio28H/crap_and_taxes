@@ -25,6 +25,11 @@ _global_script_classes=[ {
 "path": "res://interactible/Interaction.gd"
 }, {
 "base": "KinematicBody2D",
+"class": "NPC",
+"language": "GDScript",
+"path": "res://character/npc/NPC.gd"
+}, {
+"base": "KinematicBody2D",
 "class": "PlayableCharacter",
 "language": "GDScript",
 "path": "res://character/playable/PlayableCharacter.gd"
@@ -33,6 +38,7 @@ _global_script_class_icons={
 "Food": "",
 "Interactible": "",
 "Interaction": "",
+"NPC": "",
 "PlayableCharacter": ""
 }
 
@@ -124,6 +130,7 @@ ACTION={
 2d_physics/layer_2="player"
 2d_physics/layer_3="interaction_trigger"
 2d_physics/layer_4="npc"
+2d_physics/layer_5="flatulencia"
 
 [physics]
 

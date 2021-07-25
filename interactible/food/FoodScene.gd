@@ -13,10 +13,9 @@ func _ready() -> void:
 
 
 func _interact() -> void:
-	
 	player.flatulencia.duracao += _food.density
 	player.flatulencia.distance += _food.gasification
 	player.flatulencia.smell += _food.acidity
-	
+	get_parent().get_parent().get_node("AudioStreamPlayer").play()
 	queue_free()
 	._interact()
