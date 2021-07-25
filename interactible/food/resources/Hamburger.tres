@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource( 1 )
 texture = ExtResource( 2 )
+name = "Bambagar"
 density = 2
 acidity = 0
 gasification = 1

@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource( 1 )
 texture = ExtResource( 2 )
+name = "Raspadinha"
 density = 0
 acidity = -1
 gasification = 0

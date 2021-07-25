@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource( 1 )
 texture = ExtResource( 2 )
+name = "H2O"
 density = -2
 acidity = -1
 gasification = -1

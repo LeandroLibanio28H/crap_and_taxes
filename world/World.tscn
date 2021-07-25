@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://data/tilesets/parede.tres" type="TileSet" id=1]
 [ext_resource path="res://props/mesa.tscn" type="PackedScene" id=2]
@@ -7,6 +7,18 @@
 [ext_resource path="res://props/banco.tscn" type="PackedScene" id=5]
 [ext_resource path="res://character/playable/PlayableCharacter.tscn" type="PackedScene" id=6]
 [ext_resource path="res://data/tilesets/chao.png" type="Texture" id=7]
+[ext_resource path="res://world/CharactersController.gd" type="Script" id=8]
+[ext_resource path="res://props/quiosque.tscn" type="PackedScene" id=9]
+[ext_resource path="res://props/textures/vitrine_1.png" type="Texture" id=10]
+[ext_resource path="res://props/textures/vitrine_2.png" type="Texture" id=11]
+[ext_resource path="res://props/textures/vitrine_3.png" type="Texture" id=12]
+[ext_resource path="res://world/Food.gd" type="Script" id=13]
+[ext_resource path="res://interactible/food/resources/Milkshake.tres" type="Resource" id=14]
+[ext_resource path="res://interactible/food/resources/Feijoada.tres" type="Resource" id=15]
+[ext_resource path="res://interactible/food/resources/Water.tres" type="Resource" id=16]
+[ext_resource path="res://interactible/food/resources/Hamburger.tres" type="Resource" id=17]
+[ext_resource path="res://interactible/food/resources/Burrito.tres" type="Resource" id=18]
+[ext_resource path="res://interactible/food/resources/Refri.tres" type="Resource" id=19]
 
 [sub_resource type="TileSet" id=1]
 0/name = "chao.png 0"
@@ -24,6 +36,50 @@
 0/shapes = [  ]
 0/z_index = 0
 
+[sub_resource type="TileSet" id=2]
+0/name = "vitrine_1.png 0"
+0/texture = ExtResource( 10 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 48, 16 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "vitrine_2.png 1"
+1/texture = ExtResource( 11 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 16, 16 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "vitrine_3.png 2"
+2/texture = ExtResource( 12 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 32, 16 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+
 [node name="World" type="Node2D"]
 
 [node name="Floor" type="TileMap" parent="."]
@@ -38,170 +94,364 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( -589864, 0, 4, -589863, 0, 196609, -589862, 0, 196609, -589861, 0, 196609, -589860, 0, 196609, -589859, 0, 196609, -589858, 0, 196609, -589857, 0, 196609, -589856, 0, 196609, -589855, 0, 196609, -589854, 0, 196609, -589853, 0, 196609, -589852, 0, 196609, -589851, 0, 196609, -589850, 0, 196609, -589849, 0, 196609, -589848, 0, 196609, -589847, 0, 196609, -589846, 0, 196609, -589845, 0, 196609, -589844, 0, 8, -589843, 0, 196609, -589842, 0, 196609, -589841, 0, 196609, -589840, 0, 196609, -589839, 0, 196609, -589838, 0, 196609, -589837, 0, 196609, -589836, 0, 196609, -589835, 0, 196609, -589834, 0, 196609, -589833, 0, 196609, -589832, 0, 196609, -589831, 0, 196609, -589830, 0, 196609, -589829, 0, 196609, -589828, 0, 196609, -589827, 0, 196609, -589826, 0, 196609, -589825, 0, 196609, -655360, 0, 196609, -655359, 0, 196609, -655358, 0, 196609, -655357, 0, 196609, -655356, 0, 196609, -655355, 0, 196609, -655354, 0, 196609, -655353, 0, 196609, -655352, 0, 196609, -655351, 0, 196609, -655350, 0, 196609, -655349, 0, 196609, -655348, 0, 196609, -655347, 0, 196609, -655346, 0, 196609, -655345, 0, 196609, -655344, 0, 196609, -655343, 0, 196609, -655342, 0, 196609, -655341, 0, 196609, -655340, 0, 8, -655339, 0, 196609, -655338, 0, 196609, -655337, 0, 196609, -655336, 0, 196609, -655335, 0, 196609, -655334, 0, 196609, -655333, 0, 196609, -655332, 0, 196609, -655331, 0, 196609, -655330, 0, 196609, -655329, 0, 196609, -655328, 0, 196609, -655327, 0, 196609, -655326, 0, 196609, -655325, 0, 196609, -655324, 0, 196609, -655323, 0, 196609, -655322, 0, 196609, -655321, 0, 196609, -655320, 0, 7, -524328, 0, 65539, -524308, 0, 65539, -589804, 0, 65539, -589784, 0, 65539, -458792, 0, 65539, -458772, 0, 65539, -524268, 0, 65539, -524248, 0, 65539, -393256, 0, 65539, -393236, 0, 65539, -393222, 0, 3, -458746, 0, 3, -458732, 0, 65539, -458712, 0, 65539, -327720, 0, 65539, -327700, 0, 65539, -327686, 0, 65539, -393210, 0, 65539, -393196, 0, 65539, -393176, 0, 65539, -262184, 0, 65539, -262164, 0, 65539, -262150, 0, 65539, -327674, 0, 65539, -327660, 0, 65539, -327640, 0, 65539, -196648, 0, 65539, -196628, 0, 65539, -196614, 0, 65539, -262138, 0, 65539, -262124, 0, 65539, -262104, 0, 65539, -131112, 0, 65539, -131092, 0, 196612, -131091, 0, 196609, -131090, 0, 196609, -131089, 0, 196609, -131088, 0, 196609, -131087, 0, 196609, -131086, 0, 196610, -131082, 0, 196608, -131081, 0, 196609, -131080, 0, 196609, -131079, 0, 196609, -131078, 0, 196615, -196602, 0, 196612, -196601, 0, 196609, -196600, 0, 196609, -196599, 0, 196609, -196598, 0, 196610, -196594, 0, 196608, -196593, 0, 196609, -196592, 0, 196609, -196591, 0, 196609, -196590, 0, 8, -196589, 0, 196609, -196588, 0, 196615, -196568, 0, 65539, -65576, 0, 65539, -131054, 0, 131075, -131032, 0, 65539, -40, 0, 65539, -65505, 0, 0, -65504, 0, 1, -65503, 0, 1, -65502, 0, 1, -65501, 0, 1, -65500, 0, 1, -65499, 0, 1, -65498, 0, 1, -65497, 0, 1, -65496, 0, 131079, 65496, 0, 65539, 31, 0, 131072, 32, 0, 131073, 33, 0, 131073, 34, 0, 131073, 35, 0, 131073, 36, 0, 131073, 37, 0, 131073, 38, 0, 131073, 39, 0, 131073, 40, 0, 65543, 131032, 0, 65539, 65576, 0, 65539, 196568, 0, 65539, 131090, 0, 3, 131112, 0, 65539, 262104, 0, 65539, 262124, 0, 4, 262125, 0, 196609, 262126, 0, 196609, 262127, 0, 196609, 262128, 0, 196609, 262129, 0, 196609, 262130, 0, 196610, 262134, 0, 196608, 262135, 0, 196609, 262136, 0, 196609, 262137, 0, 196609, 262138, 0, 7, 196614, 0, 4, 196615, 0, 196609, 196616, 0, 196609, 196617, 0, 196609, 196618, 0, 196610, 196622, 0, 196608, 196623, 0, 196609, 196624, 0, 196609, 196625, 0, 196609, 196626, 0, 196616, 196627, 0, 196609, 196628, 0, 7, 196648, 0, 65539, 327640, 0, 65539, 327660, 0, 65539, 327674, 0, 65539, 262150, 0, 65539, 262164, 0, 65539, 262184, 0, 65539, 393176, 0, 65539, 393196, 0, 65539, 393210, 0, 65539, 327686, 0, 65539, 327700, 0, 65539, 327720, 0, 65539, 458712, 0, 65539, 458732, 0, 65539, 458746, 0, 65539, 393222, 0, 65539, 393236, 0, 65539, 393256, 0, 65539, 524248, 0, 65539, 524268, 0, 65539, 524282, 0, 131075, 458758, 0, 131075, 458772, 0, 65539, 458792, 0, 65539, 589784, 0, 65539, 589804, 0, 65539, 524308, 0, 65539, 524328, 0, 65539, 655320, 0, 65539, 655340, 0, 65539, 589844, 0, 65539, 589864, 0, 65539, 720856, 0, 196612, 720857, 0, 196609, 720858, 0, 196609, 720859, 0, 196609, 720860, 0, 196609, 720861, 0, 196609, 720862, 0, 196609, 720863, 0, 196609, 720864, 0, 196609, 720865, 0, 196609, 720866, 0, 196609, 720867, 0, 196609, 720868, 0, 196609, 720869, 0, 196609, 720870, 0, 196609, 720871, 0, 196609, 720872, 0, 196609, 720873, 0, 196609, 720874, 0, 196609, 720875, 0, 196609, 720876, 0, 196616, 720877, 0, 196609, 720878, 0, 196609, 720879, 0, 196609, 720880, 0, 196609, 720881, 0, 196609, 720882, 0, 196609, 720883, 0, 196609, 720884, 0, 196609, 720885, 0, 196609, 720886, 0, 196609, 720887, 0, 196609, 720888, 0, 196609, 720889, 0, 196609, 720890, 0, 196609, 720891, 0, 196609, 720892, 0, 196609, 720893, 0, 196609, 720894, 0, 196609, 720895, 0, 196609, 655360, 0, 196609, 655361, 0, 196609, 655362, 0, 196609, 655363, 0, 196609, 655364, 0, 196609, 655365, 0, 196609, 655366, 0, 196609, 655367, 0, 196609, 655368, 0, 196609, 655369, 0, 196609, 655370, 0, 196609, 655371, 0, 196609, 655372, 0, 196609, 655373, 0, 196609, 655374, 0, 196609, 655375, 0, 196609, 655376, 0, 196609, 655377, 0, 196609, 655378, 0, 196609, 655379, 0, 196609, 655380, 0, 196616, 655381, 0, 196609, 655382, 0, 196609, 655383, 0, 196609, 655384, 0, 196609, 655385, 0, 196609, 655386, 0, 196609, 655387, 0, 196609, 655388, 0, 196609, 655389, 0, 196609, 655390, 0, 196609, 655391, 0, 196609, 655392, 0, 196609, 655393, 0, 196609, 655394, 0, 196609, 655395, 0, 196609, 655396, 0, 196609, 655397, 0, 196609, 655398, 0, 196609, 655399, 0, 196609, 655400, 0, 196615 )
 
+[node name="Stores" type="TileMap" parent="Floor/Map"]
+tile_set = SubResource( 2 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -589843, 0, 0, -589836, 1, 0, -589825, 2, 0, -655348, 1, 0, -655343, 0, 0, -655339, 2, 0, -655337, 1, 0, -655335, 1, 0, -655334, 0, 0, -655331, 1, 0, -655329, 1, 0, -655328, 2, 0, -655326, 1, 0, -655324, 1, 0, -655323, 0, 0 )
+
 [node name="Cenario" type="YSort" parent="."]
 
-[node name="Mesa" parent="Cenario" instance=ExtResource( 2 )]
+[node name="Props" type="YSort" parent="Cenario"]
+
+[node name="Mesa" parent="Cenario/Props" instance=ExtResource( 2 )]
 position = Vector2( -360, -120 )
 
-[node name="CadeiraFrente" parent="Cenario/Mesa" instance=ExtResource( 3 )]
+[node name="CadeiraFrente" parent="Cenario/Props/Mesa" instance=ExtResource( 3 )]
 position = Vector2( 0, -16 )
 
-[node name="Mesa3" parent="Cenario" instance=ExtResource( 2 )]
+[node name="Mesa3" parent="Cenario/Props" instance=ExtResource( 2 )]
 position = Vector2( -360, -48 )
 
-[node name="CadeiraFrente" parent="Cenario/Mesa3" instance=ExtResource( 3 )]
+[node name="CadeiraFrente" parent="Cenario/Props/Mesa3" instance=ExtResource( 3 )]
 position = Vector2( 0, -16 )
 
-[node name="Mesa4" parent="Cenario" instance=ExtResource( 2 )]
+[node name="Mesa4" parent="Cenario/Props" instance=ExtResource( 2 )]
 position = Vector2( -408, -48 )
 
-[node name="CadeiraFrente" parent="Cenario/Mesa4" instance=ExtResource( 3 )]
+[node name="CadeiraFrente" parent="Cenario/Props/Mesa4" instance=ExtResource( 3 )]
 position = Vector2( 0, -16 )
 
-[node name="CadeiraLado" parent="Cenario/Mesa4" instance=ExtResource( 4 )]
+[node name="CadeiraLado" parent="Cenario/Props/Mesa4" instance=ExtResource( 4 )]
 position = Vector2( -16, 0 )
 
-[node name="Mesa6" parent="Cenario" instance=ExtResource( 2 )]
+[node name="Mesa6" parent="Cenario/Props" instance=ExtResource( 2 )]
 position = Vector2( -408, -120 )
 
-[node name="CadeiraFrente" parent="Cenario/Mesa6" instance=ExtResource( 3 )]
+[node name="CadeiraFrente" parent="Cenario/Props/Mesa6" instance=ExtResource( 3 )]
 position = Vector2( 0, -16 )
 
-[node name="Mesa7" parent="Cenario" instance=ExtResource( 2 )]
+[node name="Mesa7" parent="Cenario/Props" instance=ExtResource( 2 )]
 position = Vector2( -456, -120 )
 
-[node name="CadeiraFrente" parent="Cenario/Mesa7" instance=ExtResource( 3 )]
+[node name="CadeiraFrente" parent="Cenario/Props/Mesa7" instance=ExtResource( 3 )]
 position = Vector2( 0, -16 )
 
-[node name="CadeiraLado" parent="Cenario/Mesa7" instance=ExtResource( 4 )]
+[node name="CadeiraLado" parent="Cenario/Props/Mesa7" instance=ExtResource( 4 )]
 position = Vector2( 16, 0 )
 scale = Vector2( -1, 1 )
 
-[node name="Mesa8" parent="Cenario" instance=ExtResource( 2 )]
+[node name="Mesa8" parent="Cenario/Props" instance=ExtResource( 2 )]
 position = Vector2( 344, 152 )
 
-[node name="CadeiraFrente" parent="Cenario/Mesa8" instance=ExtResource( 3 )]
+[node name="CadeiraFrente" parent="Cenario/Props/Mesa8" instance=ExtResource( 3 )]
 position = Vector2( 0, -16 )
 
-[node name="CadeiraLado" parent="Cenario/Mesa8" instance=ExtResource( 4 )]
+[node name="CadeiraLado" parent="Cenario/Props/Mesa8" instance=ExtResource( 4 )]
 position = Vector2( 16, 0 )
 scale = Vector2( -1, 1 )
 
-[node name="Mesa11" parent="Cenario" instance=ExtResource( 2 )]
+[node name="Mesa11" parent="Cenario/Props" instance=ExtResource( 2 )]
 position = Vector2( 616, 152 )
 
-[node name="CadeiraFrente" parent="Cenario/Mesa11" instance=ExtResource( 3 )]
+[node name="CadeiraFrente" parent="Cenario/Props/Mesa11" instance=ExtResource( 3 )]
 position = Vector2( 0, -16 )
 
-[node name="CadeiraLado" parent="Cenario/Mesa11" instance=ExtResource( 4 )]
+[node name="CadeiraLado" parent="Cenario/Props/Mesa11" instance=ExtResource( 4 )]
 position = Vector2( 16, 0 )
 scale = Vector2( -1, 1 )
 
-[node name="Mesa9" parent="Cenario" instance=ExtResource( 2 )]
+[node name="Mesa9" parent="Cenario/Props" instance=ExtResource( 2 )]
 position = Vector2( -456, -48 )
 
-[node name="CadeiraFrente" parent="Cenario/Mesa9" instance=ExtResource( 3 )]
+[node name="CadeiraFrente" parent="Cenario/Props/Mesa9" instance=ExtResource( 3 )]
 position = Vector2( 0, -16 )
 
-[node name="Mesa10" parent="Cenario" instance=ExtResource( 2 )]
+[node name="Mesa10" parent="Cenario/Props" instance=ExtResource( 2 )]
 position = Vector2( -504, -48 )
 
-[node name="CadeiraFrente" parent="Cenario/Mesa10" instance=ExtResource( 3 )]
+[node name="CadeiraFrente" parent="Cenario/Props/Mesa10" instance=ExtResource( 3 )]
 position = Vector2( 0, -16 )
 
-[node name="CadeiraLado" parent="Cenario/Mesa10" instance=ExtResource( 4 )]
+[node name="CadeiraLado" parent="Cenario/Props/Mesa10" instance=ExtResource( 4 )]
 position = Vector2( -16, 0 )
 
-[node name="Mesa12" parent="Cenario" instance=ExtResource( 2 )]
+[node name="Mesa12" parent="Cenario/Props" instance=ExtResource( 2 )]
 position = Vector2( -504, -120 )
 
-[node name="CadeiraFrente" parent="Cenario/Mesa12" instance=ExtResource( 3 )]
+[node name="CadeiraFrente" parent="Cenario/Props/Mesa12" instance=ExtResource( 3 )]
 position = Vector2( 0, -16 )
 
-[node name="Mesa13" parent="Cenario" instance=ExtResource( 2 )]
+[node name="Mesa13" parent="Cenario/Props" instance=ExtResource( 2 )]
 position = Vector2( -552, -120 )
 
-[node name="CadeiraFrente" parent="Cenario/Mesa13" instance=ExtResource( 3 )]
+[node name="CadeiraFrente" parent="Cenario/Props/Mesa13" instance=ExtResource( 3 )]
 position = Vector2( 0, -16 )
 
-[node name="Mesa15" parent="Cenario" instance=ExtResource( 2 )]
+[node name="Mesa15" parent="Cenario/Props" instance=ExtResource( 2 )]
 position = Vector2( -552, -48 )
 
-[node name="CadeiraFrente" parent="Cenario/Mesa15" instance=ExtResource( 3 )]
+[node name="CadeiraFrente" parent="Cenario/Props/Mesa15" instance=ExtResource( 3 )]
 position = Vector2( 0, -16 )
 
-[node name="Banco" parent="Cenario" instance=ExtResource( 5 )]
+[node name="Banco" parent="Cenario/Props" instance=ExtResource( 5 )]
 position = Vector2( -352, 128 )
 
-[node name="Banco5" parent="Cenario" instance=ExtResource( 5 )]
+[node name="Banco5" parent="Cenario/Props" instance=ExtResource( 5 )]
 position = Vector2( -352, 88 )
 
-[node name="Banco6" parent="Cenario" instance=ExtResource( 5 )]
+[node name="Banco6" parent="Cenario/Props" instance=ExtResource( 5 )]
 position = Vector2( -432, 88 )
 
-[node name="Banco7" parent="Cenario" instance=ExtResource( 5 )]
+[node name="Banco7" parent="Cenario/Props" instance=ExtResource( 5 )]
 position = Vector2( -512, 88 )
 
-[node name="Banco8" parent="Cenario" instance=ExtResource( 5 )]
+[node name="Banco8" parent="Cenario/Props" instance=ExtResource( 5 )]
 position = Vector2( -592, 88 )
 
-[node name="Banco9" parent="Cenario" instance=ExtResource( 5 )]
+[node name="Banco9" parent="Cenario/Props" instance=ExtResource( 5 )]
 position = Vector2( -592, -48 )
 
-[node name="Banco12" parent="Cenario" instance=ExtResource( 5 )]
+[node name="Banco12" parent="Cenario/Props" instance=ExtResource( 5 )]
 position = Vector2( -280, -134 )
 
-[node name="Banco13" parent="Cenario" instance=ExtResource( 5 )]
+[node name="Banco13" parent="Cenario/Props" instance=ExtResource( 5 )]
 position = Vector2( -280, -64 )
 
-[node name="Banco14" parent="Cenario" instance=ExtResource( 5 )]
+[node name="Banco14" parent="Cenario/Props" instance=ExtResource( 5 )]
 position = Vector2( -280, 72 )
 
-[node name="Banco15" parent="Cenario" instance=ExtResource( 5 )]
+[node name="Banco15" parent="Cenario/Props" instance=ExtResource( 5 )]
 position = Vector2( -280, 144 )
 
-[node name="Banco16" parent="Cenario" instance=ExtResource( 5 )]
+[node name="Banco16" parent="Cenario/Props" instance=ExtResource( 5 )]
 position = Vector2( -120, 72 )
 
-[node name="Banco17" parent="Cenario" instance=ExtResource( 5 )]
+[node name="Banco17" parent="Cenario/Props" instance=ExtResource( 5 )]
 position = Vector2( -120, -64 )
 
-[node name="Banco18" parent="Cenario" instance=ExtResource( 5 )]
+[node name="Banco18" parent="Cenario/Props" instance=ExtResource( 5 )]
 position = Vector2( 616, -32 )
 
-[node name="Banco19" parent="Cenario" instance=ExtResource( 5 )]
+[node name="Banco19" parent="Cenario/Props" instance=ExtResource( 5 )]
 position = Vector2( 568, -32 )
 
-[node name="Banco20" parent="Cenario" instance=ExtResource( 5 )]
+[node name="Banco20" parent="Cenario/Props" instance=ExtResource( 5 )]
 position = Vector2( 520, -32 )
 
-[node name="Banco21" parent="Cenario" instance=ExtResource( 5 )]
+[node name="Banco21" parent="Cenario/Props" instance=ExtResource( 5 )]
 position = Vector2( 520, 24 )
 
-[node name="Banco22" parent="Cenario" instance=ExtResource( 5 )]
+[node name="Banco22" parent="Cenario/Props" instance=ExtResource( 5 )]
 position = Vector2( 568, 24 )
 
-[node name="Banco23" parent="Cenario" instance=ExtResource( 5 )]
+[node name="Banco23" parent="Cenario/Props" instance=ExtResource( 5 )]
 position = Vector2( 616, 24 )
 
-[node name="Banco10" parent="Cenario" instance=ExtResource( 5 )]
+[node name="Banco10" parent="Cenario/Props" instance=ExtResource( 5 )]
 position = Vector2( -592, -88 )
 
-[node name="Banco11" parent="Cenario" instance=ExtResource( 5 )]
+[node name="Banco11" parent="Cenario/Props" instance=ExtResource( 5 )]
 position = Vector2( -592, -128 )
 
-[node name="Banco2" parent="Cenario" instance=ExtResource( 5 )]
+[node name="Banco2" parent="Cenario/Props" instance=ExtResource( 5 )]
 position = Vector2( -432, 128 )
 
-[node name="Banco3" parent="Cenario" instance=ExtResource( 5 )]
+[node name="Banco3" parent="Cenario/Props" instance=ExtResource( 5 )]
 position = Vector2( -512, 128 )
 
-[node name="Banco4" parent="Cenario" instance=ExtResource( 5 )]
+[node name="Banco4" parent="Cenario/Props" instance=ExtResource( 5 )]
 position = Vector2( -592, 128 )
 
-[node name="PlayableCharacter" parent="." instance=ExtResource( 6 )]
+[node name="Quiosque" parent="Cenario/Props" instance=ExtResource( 9 )]
 
-[node name="Camera2D" type="Camera2D" parent="PlayableCharacter"]
+[node name="Quiosque2" parent="Cenario/Props" instance=ExtResource( 9 )]
+position = Vector2( -184, 4 )
+
+[node name="Quiosque3" parent="Cenario/Props" instance=ExtResource( 9 )]
+position = Vector2( 200, 0 )
+
+[node name="Quiosque4" parent="Cenario/Props" instance=ExtResource( 9 )]
+position = Vector2( 200, 112 )
+
+[node name="Quiosque5" parent="Cenario/Props" instance=ExtResource( 9 )]
+position = Vector2( -184, -96 )
+
+[node name="Food" type="YSort" parent="Cenario"]
+script = ExtResource( 13 )
+_food_types = [ ExtResource( 18 ), ExtResource( 15 ), ExtResource( 17 ), ExtResource( 14 ), ExtResource( 19 ), ExtResource( 16 ) ]
+
+[node name="FoodSpawn1" type="Position2D" parent="Cenario/Food"]
+position = Vector2( -592, -128 )
+
+[node name="FoodSpawn14" type="Position2D" parent="Cenario/Food"]
+position = Vector2( -592, 88 )
+
+[node name="FoodSpawn15" type="Position2D" parent="Cenario/Food"]
+position = Vector2( -592, 128 )
+
+[node name="FoodSpawn16" type="Position2D" parent="Cenario/Food"]
+position = Vector2( -512, 128 )
+
+[node name="FoodSpawn17" type="Position2D" parent="Cenario/Food"]
+position = Vector2( -512, 88 )
+
+[node name="FoodSpawn18" type="Position2D" parent="Cenario/Food"]
+position = Vector2( -432, 88 )
+
+[node name="FoodSpawn19" type="Position2D" parent="Cenario/Food"]
+position = Vector2( -432, 128 )
+
+[node name="FoodSpawn20" type="Position2D" parent="Cenario/Food"]
+position = Vector2( -352, 128 )
+
+[node name="FoodSpawn21" type="Position2D" parent="Cenario/Food"]
+position = Vector2( -352, 88 )
+
+[node name="FoodSpawn22" type="Position2D" parent="Cenario/Food"]
+position = Vector2( -280, 72 )
+
+[node name="FoodSpawn23" type="Position2D" parent="Cenario/Food"]
+position = Vector2( -280, 144 )
+
+[node name="FoodSpawn24" type="Position2D" parent="Cenario/Food"]
+position = Vector2( -120, 72 )
+
+[node name="FoodSpawn25" type="Position2D" parent="Cenario/Food"]
+position = Vector2( -120, -64 )
+
+[node name="FoodSpawn26" type="Position2D" parent="Cenario/Food"]
+position = Vector2( -280, -64 )
+
+[node name="FoodSpawn27" type="Position2D" parent="Cenario/Food"]
+position = Vector2( -280, -134 )
+
+[node name="FoodSpawn28" type="Position2D" parent="Cenario/Food"]
+position = Vector2( 344, 152 )
+
+[node name="FoodSpawn29" type="Position2D" parent="Cenario/Food"]
+position = Vector2( 616, 152 )
+
+[node name="FoodSpawn30" type="Position2D" parent="Cenario/Food"]
+position = Vector2( 616, 24 )
+
+[node name="FoodSpawn31" type="Position2D" parent="Cenario/Food"]
+position = Vector2( 568, 24 )
+
+[node name="FoodSpawn32" type="Position2D" parent="Cenario/Food"]
+position = Vector2( 520, -32 )
+
+[node name="FoodSpawn33" type="Position2D" parent="Cenario/Food"]
+position = Vector2( 568, -32 )
+
+[node name="FoodSpawn34" type="Position2D" parent="Cenario/Food"]
+position = Vector2( 616, -32 )
+
+[node name="FoodSpawn2" type="Position2D" parent="Cenario/Food"]
+position = Vector2( -552, -120 )
+
+[node name="FoodSpawn3" type="Position2D" parent="Cenario/Food"]
+position = Vector2( -504, -120 )
+
+[node name="FoodSpawn4" type="Position2D" parent="Cenario/Food"]
+position = Vector2( -456, -120 )
+
+[node name="FoodSpawn5" type="Position2D" parent="Cenario/Food"]
+position = Vector2( -408, -120 )
+
+[node name="FoodSpawn6" type="Position2D" parent="Cenario/Food"]
+position = Vector2( -360, -120 )
+
+[node name="FoodSpawn7" type="Position2D" parent="Cenario/Food"]
+position = Vector2( -360, -48 )
+
+[node name="FoodSpawn8" type="Position2D" parent="Cenario/Food"]
+position = Vector2( -408, -48 )
+
+[node name="FoodSpawn9" type="Position2D" parent="Cenario/Food"]
+position = Vector2( -456, -48 )
+
+[node name="FoodSpawn10" type="Position2D" parent="Cenario/Food"]
+position = Vector2( -504, -48 )
+
+[node name="FoodSpawn11" type="Position2D" parent="Cenario/Food"]
+position = Vector2( -552, -48 )
+
+[node name="FoodSpawn12" type="Position2D" parent="Cenario/Food"]
+position = Vector2( -592, -48 )
+
+[node name="FoodSpawn13" type="Position2D" parent="Cenario/Food"]
+position = Vector2( -592, -88 )
+
+[node name="Characters" type="YSort" parent="Cenario"]
+script = ExtResource( 8 )
+
+[node name="Spawns" type="Node2D" parent="Cenario/Characters"]
+
+[node name="Position2D" type="Position2D" parent="Cenario/Characters/Spawns"]
+position = Vector2( -608, 0 )
+
+[node name="Position2D2" type="Position2D" parent="Cenario/Characters/Spawns"]
+position = Vector2( -584, 0 )
+
+[node name="Position2D3" type="Position2D" parent="Cenario/Characters/Spawns"]
+position = Vector2( -560, 0 )
+
+[node name="Position2D4" type="Position2D" parent="Cenario/Characters/Spawns"]
+position = Vector2( -536, 0 )
+
+[node name="Position2D5" type="Position2D" parent="Cenario/Characters/Spawns"]
+position = Vector2( -512, 0 )
+
+[node name="Position2D6" type="Position2D" parent="Cenario/Characters/Spawns"]
+position = Vector2( -488, 0 )
+
+[node name="Position2D7" type="Position2D" parent="Cenario/Characters/Spawns"]
+position = Vector2( -464, 0 )
+
+[node name="Position2D8" type="Position2D" parent="Cenario/Characters/Spawns"]
+position = Vector2( -440, 0 )
+
+[node name="Position2D9" type="Position2D" parent="Cenario/Characters/Spawns"]
+position = Vector2( -416, 0 )
+
+[node name="Position2D10" type="Position2D" parent="Cenario/Characters/Spawns"]
+position = Vector2( -392, 0 )
+
+[node name="Position2D11" type="Position2D" parent="Cenario/Characters/Spawns"]
+position = Vector2( 250, 0 )
+
+[node name="Position2D12" type="Position2D" parent="Cenario/Characters/Spawns"]
+position = Vector2( 274, 0 )
+
+[node name="Position2D13" type="Position2D" parent="Cenario/Characters/Spawns"]
+position = Vector2( 298, 0 )
+
+[node name="Position2D14" type="Position2D" parent="Cenario/Characters/Spawns"]
+position = Vector2( 322, 0 )
+
+[node name="Position2D15" type="Position2D" parent="Cenario/Characters/Spawns"]
+position = Vector2( 346, 0 )
+
+[node name="Position2D16" type="Position2D" parent="Cenario/Characters/Spawns"]
+position = Vector2( 370, 0 )
+
+[node name="Position2D17" type="Position2D" parent="Cenario/Characters/Spawns"]
+position = Vector2( 394, 0 )
+
+[node name="Position2D18" type="Position2D" parent="Cenario/Characters/Spawns"]
+position = Vector2( 418, 0 )
+
+[node name="Position2D19" type="Position2D" parent="Cenario/Characters/Spawns"]
+position = Vector2( 442, 0 )
+
+[node name="Position2D20" type="Position2D" parent="Cenario/Characters/Spawns"]
+position = Vector2( 466, 0 )
+
+[node name="PlayableCharacter" parent="Cenario/Characters" instance=ExtResource( 6 )]
+position = Vector2( 0, 80 )
+
+[node name="Camera2D" type="Camera2D" parent="Cenario/Characters/PlayableCharacter"]
 current = true
 limit_left = -660
 limit_top = -162

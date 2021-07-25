@@ -1,15 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://character/playable/textures/pc_sheet.png" type="Texture" id=1]
-[ext_resource path="res://character/playable/PlayableCharacter.gd" type="Script" id=2]
+[ext_resource path="res://character/npc/textures/npc_1.png" type="Texture" id=1]
+[ext_resource path="res://character/npc/NPC.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 6.0
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 12.0
-
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -25,7 +23,8 @@ tracks/0/keys = {
 "values": [ 3, 4, 5, 6 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
+resource_name = "move"
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -41,29 +40,24 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 1 ]
 }
 
-[node name="PlayableCharacter" type="KinematicBody2D"]
+[node name="NPC" type="KinematicBody2D"]
+collision_layer = 8
 script = ExtResource( 2 )
-_move_speed = 55.0
+_move_speed = 45.0
 _anim_player = NodePath("AnimationPlayer")
 _sprite = NodePath("Sprite")
 
-[node name="Collision" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 2 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
-hframes = 15
+hframes = 7
 frame = 3
 
-[node name="InteractionArea" type="Area2D" parent="."]
-monitoring = false
-collision_layer = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
-shape = SubResource( 2 )
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "idle"
-anims/idle = SubResource( 3 )
-anims/move = SubResource( 4 )
+anims/idle = SubResource( 2 )
+anims/move = SubResource( 3 )
+
+[node name="IATimer" type="Timer" parent="."]

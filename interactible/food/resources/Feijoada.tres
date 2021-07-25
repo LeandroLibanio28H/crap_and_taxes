@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource( 1 )
 texture = ExtResource( 2 )
+name = "Feijuca"
 density = 3
 acidity = 1
 gasification = 0
