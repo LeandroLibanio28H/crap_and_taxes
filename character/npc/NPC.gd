@@ -2,6 +2,7 @@ class_name NPC extends KinematicBody2D
 
 
 var _gibs_scene = preload("res://character/gibs/Gibs.tscn")
+var _reaction_scene = preload("res://character/npc/Reaction.tscn")
 
 # EXPORT
 export var _move_speed : float
@@ -64,33 +65,30 @@ func _handle_IA() -> void:
 		$IATimer.start()
 
 
-func _reaction(pos : Vector2, acidity : int) -> void:
-	if acidity >= _explostion_rate:
-		_explode()
+func _reaction(pos : Vector2, flatulencia : PlayableCharacter.Flatulencia) -> void:
+	get_tree().get_current_scene().current_score += (flatulencia.distance * 10 + 
+			flatulencia.duracao * 10 + flatulencia.smell * 10)
+	if flatulencia.smell >= _explostion_rate:
+		_explode(flatulencia)
 	var direction = global_position - pos
 	state = States.REACTION
 	_velocity = direction.normalized() * _move_speed * 1.5
 
 
-func _explode() -> void:
+func _explode(flatulencia : PlayableCharacter.Flatulencia) -> void:
+	get_tree().get_current_scene().current_score += (flatulencia.distance * 10 + 
+			flatulencia.duracao * 10 + flatulencia.smell * 10 + flatulencia.force)
 	exploded = true
 	for __ in range((randi() % 4) + 1):
 		var gib = _gibs_scene.instance()
 		gib.position = position
 		get_parent().add_child(gib)
 		get_parent().get_parent().get_parent().get_node("Floor").create_splatter(position)
-	
-	_reaction_explosion(global_position, 5)
+	var reaction = _reaction_scene.instance()
+	reaction.position = global_position
+	reaction.flatulencia = flatulencia
+	get_parent().add_child(reaction)
 	queue_free()
-
-
-func _reaction_explosion(pos : Vector2, acidity : int) -> void:
-	var bodies = $Reaction.get_overlapping_bodies()
-	
-	for npc in bodies:
-		if npc != self and not npc.exploded:
-			if npc.has_method("_reaction"):
-				npc._reaction(pos, acidity)
 
 
 # CLASS METHODS

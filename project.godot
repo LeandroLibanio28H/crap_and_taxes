@@ -48,6 +48,10 @@ config/name="Crap & Taxes"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+SaveSystem="*res://src/autoload/SaveSystem.gd"
+
 [debug]
 
 gdscript/completion/autocomplete_setters_and_getters=true

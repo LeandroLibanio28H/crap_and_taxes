@@ -16,7 +16,6 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	var old = selected
 	if event.is_action_pressed("MOVE_S"):
 		selected += 1
 	elif event.is_action_pressed("MOVE_N"):
